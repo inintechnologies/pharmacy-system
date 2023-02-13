@@ -1,4 +1,5 @@
 var express = require('express');
+const dotenv = require("dotenv").config();
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
@@ -37,10 +38,11 @@ app.use(express.static('./public'));
 // typeahead
 
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'pharmacy'
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASS,
+  database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
 });
 
 connection.connect();
@@ -143,10 +145,11 @@ app.get('/admin', function (req, res) {
   // *****************************************************
 
   var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'pharmacy'
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASS,
+    database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
 });
 
 var totalSell = "select ROUND(SUM(Total_Payable),2) AS sells_count from bill_information";

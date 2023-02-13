@@ -32,10 +32,11 @@ router.use('*', function (req, res, next) {
 router.get('/', function (req, res) {
 
     var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'pharmacy'
+        host: process.env.DATABASE_HOST,
+        user: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASS,
+        database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
     });
     
     var totalSell = "select ROUND(SUM(Total_Payable),2) AS sells_count from bill_information";
@@ -349,10 +350,11 @@ router.get('/batch/create', function (req, res) {
     check_staff(req, res);
 
     var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'pharmacy'
+        host: process.env.DATABASE_HOST,
+        user: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASS,
+        database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
     });
 
     var medicineName = "SELECT * FROM Medicine_Information";
@@ -397,10 +399,11 @@ router.post('/batch/create', function (req, res) {
         if (!result.isEmpty()) {
 
             var connection = mysql.createConnection({
-                host: 'localhost',
-                user: 'root',
-                password: '',
-                database: 'pharmacy'
+                host: process.env.DATABASE_HOST,
+                user: process.env.DATABASE_USER,
+                password: process.env.DATABASE_PASS,
+                database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
             });
 
             var medicineName = "SELECT * FROM Medicine_Information";
@@ -835,10 +838,11 @@ router.get('/medicine/create', function (req, res) {
     check_staff(req, res);
 
     var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'pharmacy'
+        host: process.env.DATABASE_HOST,
+        user: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASS,
+        database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
     });
 
     var generic = "SELECT * FROM drug_generic_name";
@@ -886,10 +890,11 @@ router.post('/medicine/create', function (req, res) {
         if (!result.isEmpty()) {
 
             var connection = mysql.createConnection({
-                host: 'localhost',
-                user: 'root',
-                password: '',
-                database: 'pharmacy'
+                host: process.env.DATABASE_HOST,
+                user: process.env.DATABASE_USER,
+                password: process.env.DATABASE_PASS,
+                database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
             });
 
             var generic = "SELECT * FROM drug_generic_name";
@@ -947,10 +952,11 @@ router.get('/medicine/edit/:id', function (req, res) {
     check_staff(req, res);
 
     var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'pharmacy'
+        host: process.env.DATABASE_HOST,
+        user: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASS,
+        database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
     });
 
     var id = req.params.id;
@@ -1010,10 +1016,11 @@ router.post('/medicine/edit/:id', function (req, res) {
         if (!result.isEmpty()) {
 
             var connection = mysql.createConnection({
-                host: 'localhost',
-                user: 'root',
-                password: '',
-                database: 'pharmacy'
+                host: process.env.DATABASE_HOST,
+                user: process.env.DATABASE_USER,
+                password: process.env.DATABASE_PASS,
+                database: process.env.DATABASE_NAME,
+            port: process.env.DATABASE_PORT
             });
 
             var id = req.params.id;
